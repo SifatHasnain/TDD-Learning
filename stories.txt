@@ -1,0 +1,39 @@
+1 .Write a program that will take a start date, end date and a city name and output the temperature of that city in each day within that date range. 
+Keep in mind that -
+	1. Start date will be a string in “DD/MM/YYYY” format.
+	2. End date will be a string in “DD/MM/YYYY” format.
+	3. City name will be a string limited to Dhaka, Paris, New York, Sydney and Singapore.
+	4. You can use any 3rd party weather API of your choice for getting the data.
+
+
+---- Solution Approach ----
+
+	class CityTemperature
+		str: start_date 
+		str: end_date
+			validation ->
+				1. date format
+				2. end date cannot be earlier than start date
+				3. 
+		str: city_name in ["Dhaka", "Paris", "New York", "Sydney", "Singapore"]
+			validation ->
+				1. city name must be in the list
+		task ->
+			1. API request for getting day to day temperatures in the given range
+			API: https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/[location]/[date1]/[date2]?key=YOUR_API_KEY 
+			validation ->
+				1. check API doc for i/o format and mock for test
+		returns -> [t1[start_date], t2, t3, ...,tn[end_date]], where ti=temperature of i-th day
+
+	class TestCiyTemperature
+		TestCase
+			1. assertException for ValueError -> date format or city name not supported
+			2. assertException for date range invalid
+		Setup
+			1. mock input data
+			2. mock get_temperature.requests
+
+
+---- Extension Plan to Practice Design Patterns ----
+	Configuration Management?
+	Can it be Weather Data Variation?
